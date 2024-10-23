@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+    <style>
+        html, body {
+            height: 98%;
+            margin: 0;
+            padding:0;
+        }   
+        body{
+            font-family: Arial, sans-serif;
+            background-image: url('/static/image1.jpeg');
+            background-repeat: no-repeat; /* Don't repeat the image */
+            background-size: cover; /* Cover the entire container */
+            background-position: center center;
+            
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; 
+        
+        }
+        li {
+            margin: 10px;
+        }
+        li a img {
+            display: block; 
+            max-width: 1500px; 
+            height:200px;
+            border-radius: 12px;
+
+        }
+        figure {
+            margin: 0; 
+        }
+        figcaption {
+            font-size: 30px;
+            color: black;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #16adee;
+            color: #faf6f6;
+            font-size: 20px;
+            border-radius: 5px;
+            float:right;    
+        }
+        input[type="submit"]:hover {
+            background-color: #474bff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/logout" method="POST">
+        <input type="submit" value="Logout">
+    </form>
+    <h1>Categories</h1>
+    <ul>
+        <li>
+            <figure>
+                <a href="{{ url_for('c_category') }}">
+                    <img src="{{ url_for('static', filename='c pro.png') }}" alt="C Category">
+                </a>
+                <figcaption>C programming</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure>
+                <a href="{{ url_for('python_category') }}">
+                    <img src="{{ url_for('static', filename='python.jpg') }}" alt="Python Category">
+                </a> 
+                <figcaption>Python</figcaption>
+            </figure>   
+        </li>
+        <li>
+            <figure>
+                <a href="{{ url_for('java_category') }}">
+                    <img src="{{ url_for('static', filename='java.png') }}" alt="Java Category">
+                </a>
+                <figcaption>Java</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure>
+                <a href="{{ url_for('sports_category') }}">
+                    <img src="{{ url_for('static', filename='sports.jpg') }}" alt="Sports Category">
+                </a>
+                <figcaption>Sports</figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure>
+                <a href="{{ url_for('politics_category') }}">
+                    <img src="{{ url_for('static', filename='politics.jpg') }}" alt="Politics Category">
+                </a>
+                <figcaption>Politics</figcaption>
+            </figure>
+        </li>
+    </ul>
+</body>
+</html>

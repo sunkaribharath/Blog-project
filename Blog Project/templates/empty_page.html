@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category_name }} Category</title>
+    <style>
+        html, body {
+            height: 98%;
+            margin: 0;
+            padding:0;
+        }   
+        body{
+            font-family: Arial, sans-serif;
+            background-image: url('/static/image1.jpeg');
+            background-repeat: no-repeat; /* Don't repeat the image */
+            background-size: cover; /* Cover the entire container */
+            background-position: center center;
+            
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+           
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color:  #537e93;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-button {
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 90%;
+        }
+        input[type="submit"] {
+            background-color: #16adee;
+            color: #faf6f6;
+            font-size: 20px;
+            border-radius: 10px;
+            float:right;    
+        }
+        input[type="submit"]:hover {
+            background-color: #060505;
+            font-size: 20px;
+        }   
+    </style>
+</head>
+<body>
+    <form action="/logout" method="POST">
+        <input type="submit" value="Logout">
+    </form>
+    <div class="container">
+        <h1>{{ category_name }} Category</h1>
+        <ul>
+            {% for blog, link in blog_content %}
+                <li>
+                    <a class="blog-button" href="{{ link }}">{{ blog }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

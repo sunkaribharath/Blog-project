@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+        /* Reset some default styling */
+        body{
+            margin: 9%;
+            padding: 0;
+        
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/login.jpeg');
+            background-repeat: no-repeat; /* Don't repeat the image */
+            background-size: cover; /* Cover the entire container */
+            background-position: center center;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #16adee;
+            color: #faf6f6;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;    
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+        button[type="submit"]:hover {
+            background-color: #474bff;
+            font-size: 20px;
+        }
+
+        a {
+            color:rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            
+        }
+        .centered-text {
+            text-align: center;
+            margin-top: 20px; 
+        }
+        .glitch-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;  
+         }
+         
+         .glitch {
+            position: relative;
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+            letter-spacing: 5px;
+            z-index: 1;
+         }
+         
+         .glitch:before,
+         .glitch:after {
+            display: block;
+            content: attr(data-glitch);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+         }
+         
+         .glitch:before {
+            animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            color: #474bff;
+            z-index: -1;
+         }
+         
+         .glitch:after {
+            animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            color: #47d3ff;
+            z-index: -2;
+         }
+         
+         @keyframes glitch-color {
+            0% {
+               transform: translate(0);
+            }
+         
+            20% {
+               transform: translate(-3px, 3px);
+            }
+         
+            40% {
+               transform: translate(-3px, -3px);
+            }
+         
+            60% {
+               transform: translate(3px, 3px);
+            }
+         
+            80% {
+               transform: translate(3px, -3px);
+            }
+         
+            to {
+               transform: translate(0);
+            }
+         }
+         #toast {
+            visibility: hidden;
+            max-width: 50px;
+            height: 50px;
+            /*margin-left: -125px;*/
+            margin: auto;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 30px;
+        
+            position: fixed;
+            z-index: 1;
+            left: 0;right:0;
+            bottom: 30px;
+            font-size: 17px;
+            white-space: nowrap;
+        }
+        #toast #img{
+            width: 50px;
+            height: 50px;
+            float: left;
+            border-radius:30px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            box-sizing: border-box;
+            background-color: #111;
+            color: #fff;
+        }
+        #toast #desc{
+            color: #fff;
+            padding: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        #toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+        }
+        
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 30px; opacity: 1;}
+        }
+        
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        
+        @-webkit-keyframes expand {
+            from {min-width: 50px} 
+            to {min-width: 350px}
+        }
+        
+        @keyframes expand {
+            from {min-width: 50px}
+            to {min-width: 350px}
+        }
+        @-webkit-keyframes stay {
+            from {min-width: 350px} 
+            to {min-width: 350px}
+        }
+        
+        @keyframes stay {
+            from {min-width: 350px}
+            to {min-width: 350px}
+        }
+        @-webkit-keyframes shrink {
+            from {min-width: 350px;} 
+            to {min-width: 50px;}
+        }
+        
+        @keyframes shrink {
+            from {min-width: 350px;} 
+            to {min-width: 50px;}
+        }
+        
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;} 
+            to {bottom: 60px; opacity: 0;}
+        }
+        
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 60px; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="/signup" method="post">
+        <h1>
+            <div class="glitch-wrapper">
+                <div class="glitch" data-glitch="SignUp">SignUp</div>
+             </div>
+        </h1>
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <button type="submit" onclick="launch_toast()">SignUp</button>
+        <div class="centered-text">
+            <p>Already have an account? <a href="/login">Login</a> here</p>
+        </div>
+    </form>
+    {% if error_message %}
+        <div id="toast" class="toast">
+            <div id="img">Error</div>
+            <div id="desc">{{error_message}}</div>
+        </div>
+        <script>
+            var toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        </script>
+    {% endif %}
+</body>
+</html>
